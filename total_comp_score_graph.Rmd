@@ -1,0 +1,25 @@
+---
+title: "trial_rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+performances_sum <- performances %>%
+  filter(competition == "Grand Prix Final 2017 Senior and Junior") %>%
+  group_by(competition, name, nation) %>%
+  summarize(total_comp_score = sum(total_segment_score), .groups = "drop") %>%
+ ggplot(aes(x = name, y = total_comp_score, color = nation)) +
+  geom_point() + 
+  labs(title = "Grand Prix Final 2017 Total Competition Score", 
+       x = "competitors", 
+       y = "Total Competition Score")
+  
+
+performances_sum
+```
+
