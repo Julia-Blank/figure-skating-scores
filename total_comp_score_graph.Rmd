@@ -9,6 +9,9 @@ library(tidyverse)
 ```
 
 ```{r}
+programs <- read_csv("data/tidy/programs.csv")
+performances <- read_csv("data/tidy/performances.csv")
+
 performances_sum <- performances %>%
   filter(competition == "Grand Prix Final 2017 Senior and Junior") %>%
   group_by(competition, name, nation) %>%
